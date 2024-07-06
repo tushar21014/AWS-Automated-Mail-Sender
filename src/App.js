@@ -7,6 +7,7 @@ import './App.css';
  *
  * @returns {JSX.Element} The JSX element representing the App component.
  */
+
 function App() {
     const [emails, setEmails] = useState('');
     const [format, setFormat] = useState('format1');
