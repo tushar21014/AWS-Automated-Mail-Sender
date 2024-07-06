@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
+/**
+ * The main component of the email scheduler application.
+ *
+ * @returns {JSX.Element} The JSX element representing the App component.
+ */
+
 function App() {
     const [emails, setEmails] = useState('');
     const [format, setFormat] = useState('format1');
@@ -20,12 +26,16 @@ function App() {
     // Check if the sendImmediately checkbox is checked
     const [sendImmediately, setSendImmediately] = useState(false);
 
+    // Acces the api from env file
+    const api = process.env.REACT_APP_API_URL;
+
+
     // Send the email immediately on form submission (without scheduling) 
     const handleSubmitImmediately = async (e) => {
         e.preventDefault();
 
         try {
-            await axios.post('http://localhost:3001/send-email', {
+            await axios.post(api + '/send-email', {
                 emails,
                 format,
                 subject,
@@ -57,7 +67,7 @@ function App() {
         console.log('scheduleTime:', scheduleTime);
 
         try {
-            await axios.post('http://localhost:3001/schedule-email', {
+            await axios.post(api+'/schedule-email', {
                 emails,
                 format,
                 subject,
@@ -173,3 +183,4 @@ function App() {
 }
 
 export default App;
+
