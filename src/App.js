@@ -17,15 +17,45 @@ function App() {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
 
+    // Check if the sendImmediately checkbox is checked
+    const [sendImmediately, setSendImmediately] = useState(false);
+
+    // Send the email immediately on form submission (without scheduling) 
+    const handleSubmitImmediately = async (e) => {
+        e.preventDefault();
+
+        try {
+            await axios.post('http://localhost:3001/send-email', {
+                emails,
+                format,
+                subject,
+                companyName,
+                companyPost,
+                companyPostURL
+            });
+            alert('Email sent successfully!');
+        }
+        catch (error) {
+            alert('Error sending email: ' + error.message);
+        }
+        finally {
+            setLoading(false);
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+
+        if (document.getElementById('sendImmediately').checked) {
+            return handleSubmitImmediately(e);
+        }
 
         // Combine date and time into a single string in the format: second (optional), minute, hour, day of month, month, day of week 
         const scheduleTime = `${time.split(':')[1]} ${time.split(':')[0]} ${date.split('-')[2]} ${date.split('-')[1]} *`;
 
         console.log('scheduleTime:', scheduleTime);
-        
+
         try {
             await axios.post('http://localhost:3001/schedule-email', {
                 emails,
@@ -98,17 +128,25 @@ function App() {
                                 </div>
                             </>
                         )}
+
+                        {/* Add a checkbox to allow the user to send the email immediately */}
+                        <div>
+                            <input type="checkbox" id="sendImmediately" name="sendImmediately" checked={sendImmediately} onChange={(e) => setSendImmediately(e.target.checked)} />
+                            <label htmlFor="sendImmediately">Send email immediately</label>
+                        </div>
+
                         <div>
                             <label>Schedule Time (cron format, IST):</label>
                             {/* <input type="text" value={scheduleTime} style={{width:"70vw"}} onChange={(e) => setScheduleTime(e.target.value)} placeholder="e.g. '0 9 * * *' for 9 AM daily" required /> */}
                         </div>
                         <div>
                             <label>Date:</label>
-                            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+                            {/* If the checkbox is checked, disable the date and time inputs */}
+                            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required={sendImmediately ? false : true} disabled={sendImmediately} />
                         </div>
                         <div>
                             <label>Time:</label>
-                            <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
+                            <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required={sendImmediately ? false : true} disabled={sendImmediately} />
                         </div>
                         <button type="submit">Schedule Email</button>
                     </form>
@@ -121,7 +159,7 @@ function App() {
                         <div key={index} className="email-item">
                             <strong>Subject:</strong> {email.subject}<br />
                             <strong>To:</strong> {email.emails}<br />
-                            <strong>Scheduled Time:</strong> {email.scheduleTime}<br />
+                            <strong>Scheduled Time:</strong> {email.scheduleTime.reverse()}<br />
                             <strong>Company Name:</strong> {email.companyName}<br />
                             <strong>Company Post:</strong> {email.companyPost}
                         </div>
