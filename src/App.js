@@ -87,7 +87,7 @@ function App() {
 
     const fetchScheduledEmails = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/scheduled-emails');
+            const response = await axios.get(api+'/scheduled-emails');
             setScheduledEmails(response.data);
         } catch (error) {
             console.error('Error fetching scheduled emails:', error);
