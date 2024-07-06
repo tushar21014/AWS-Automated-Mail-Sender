@@ -47,7 +47,7 @@ function App() {
         e.preventDefault();
         setLoading(true);
 
-        if (document.getElementById('sendImmediately').checked) {
+        if (sendImmediately) {
             return handleSubmitImmediately(e);
         }
 
@@ -159,7 +159,9 @@ function App() {
                         <div key={index} className="email-item">
                             <strong>Subject:</strong> {email.subject}<br />
                             <strong>To:</strong> {email.emails}<br />
-                            <strong>Scheduled Time:</strong> {email.scheduleTime.reverse()}<br />
+                            {/*  convert the cron format: second (optional), minute, hour, day of month, month, day of week (Scheduled Time: 29 00 07 07 *)  to a human-readable format */}
+                            <strong>Scheduled Date:</strong> {email.scheduleTime.split(' ').slice(2, 4).join('-')}<br />
+                            <strong>Scheduled Time:</strong> {email.scheduleTime.split(' ').slice(0, 2).reverse().join(':')}<br />
                             <strong>Company Name:</strong> {email.companyName}<br />
                             <strong>Company Post:</strong> {email.companyPost}
                         </div>
