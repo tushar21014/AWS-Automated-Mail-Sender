@@ -212,6 +212,11 @@ function scheduleEmail({ emails, format, subject, companyName, companyPost, comp
     scheduledTasks.push({ emails, format, subject, companyName, companyPost, companyPostURL, scheduleTime, task });
 }
 
+// Route / for testing server status
+app.get('/', (req, res) => {
+    res.send('Server is running successfully');
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
