@@ -9,13 +9,23 @@ function App() {
     const [companyName, setCompanyName] = useState('');
     const [companyPost, setCompanyPost] = useState('');
     const [companyPostURL, setCompanyPostURL] = useState('');
-    const [scheduleTime, setScheduleTime] = useState('');
     const [loading, setLoading] = useState(false);
     const [scheduledEmails, setScheduledEmails] = useState([]);
+    
+    
+    const [scheduleTime, setScheduleTime] = useState('');
+    const [date, setDate] = useState('');
+    const [time, setTime] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+
+        // Combine date and time into a single string in the format: second (optional), minute, hour, day of month, month, day of week 
+        const scheduleTime = `${time.split(':')[1]} ${time.split(':')[0]} ${date.split('-')[2]} ${date.split('-')[1]} *`;
+
+        console.log('scheduleTime:', scheduleTime);
+        
         try {
             await axios.post('http://localhost:3001/schedule-email', {
                 emails,
@@ -90,7 +100,15 @@ function App() {
                         )}
                         <div>
                             <label>Schedule Time (cron format, IST):</label>
-                            <input type="text" value={scheduleTime} style={{width:"70vw"}} onChange={(e) => setScheduleTime(e.target.value)} placeholder="e.g. '0 9 * * *' for 9 AM daily" required />
+                            {/* <input type="text" value={scheduleTime} style={{width:"70vw"}} onChange={(e) => setScheduleTime(e.target.value)} placeholder="e.g. '0 9 * * *' for 9 AM daily" required /> */}
+                        </div>
+                        <div>
+                            <label>Date:</label>
+                            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+                        </div>
+                        <div>
+                            <label>Time:</label>
+                            <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
                         </div>
                         <button type="submit">Schedule Email</button>
                     </form>
