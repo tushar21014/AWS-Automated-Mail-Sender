@@ -3,6 +3,8 @@ const nodemailer = require('nodemailer');
 const multer = require('multer');
 const cors = require('cors');
 const fs = require('fs');
+const cron = require('node-cron');
+const scheduledTasks = [];
 
 const app = express();
 const upload = multer();
@@ -86,6 +88,30 @@ const emailContents = {
     })
 };
 
+app.post('/schedule-email', upload.none(), (req, res) => {
+    const { emails, format, subject, companyName, companyPost, companyPostURL, scheduleTime } = req.body;
+
+    try {
+        scheduleEmail({ emails, format, subject, companyName, companyPost, companyPostURL, scheduleTime });
+        res.status(200).send('Email scheduled successfully');
+    } catch (error) {
+        res.status(500).send('Error scheduling email: ' + error.toString());
+    }
+});
+
+app.get('/scheduled-emails', (req, res) => {
+    res.status(200).json(scheduledTasks.map(task => ({
+        emails: task.emails,
+        format: task.format,
+        subject: task.subject,
+        companyName: task.companyName,
+        companyPost: task.companyPost,
+        companyPostURL: task.companyPostURL,
+        scheduleTime: task.scheduleTime
+    })));
+});
+
+
 app.post('/send-email', upload.none(), (req, res) => {
     const { emails, format, subject, companyName, companyPost, companyPostURL } = req.body;
 
@@ -136,6 +162,55 @@ app.post('/send-email', upload.none(), (req, res) => {
             res.status(500).send('Error sending emails: ' + error.toString());
         });
 });
+
+
+function scheduleEmail({ emails, format, subject, companyName, companyPost, companyPostURL, scheduleTime }) {
+    const task = cron.schedule(scheduleTime, () => {
+        const emailList = emails.split(',').map(email => email.trim());
+        let emailContent;
+        if (format === 'format1' || format === 'format3') {
+            emailContent = emailContents[format](companyName, companyPost, companyPostURL);
+        } else {
+            emailContent = emailContents[format];
+        }
+
+        const attachments = [
+            {
+                filename: 'Curriculum Vitae Tushar Gupta.pdf',
+                content: fs.readFileSync('Curriculum Vitae Tushar Gupta.pdf'),
+                contentType: 'application/pdf'
+            },
+            {
+                filename: 'Tushar Cover Letter.pdf',
+                content: fs.readFileSync('Tushar Cover Letter.pdf'),
+                contentType: 'application/pdf'
+            }
+        ];
+
+        emailList.forEach(email => {
+            const mailOptions = {
+                from: '"Tushar Gupta" <tg21014@gmail.com>',
+                to: email,
+                subject: subject || 'Default Subject',
+                text: emailContent.text,
+                html: emailContent.html,
+                attachments: attachments
+            };
+
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.error(`Error sending email to ${email}:`, error);
+                } else {
+                    console.log(`Email sent to ${email}:`, info.response);
+                }
+            });
+        });
+    }, {
+        timezone: 'Asia/Kolkata'
+    });
+
+    scheduledTasks.push({ emails, format, subject, companyName, companyPost, companyPostURL, scheduleTime, task });
+}
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
