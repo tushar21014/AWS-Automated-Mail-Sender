@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
+/**
+ * The main component of the email scheduler application.
+ *
+ * @returns {JSX.Element} The JSX element representing the App component.
+ */
 function App() {
     const [emails, setEmails] = useState('');
     const [format, setFormat] = useState('format1');
