@@ -17,8 +17,8 @@ function App() {
     const [companyPostURL, setCompanyPostURL] = useState('');
     const [loading, setLoading] = useState(false);
     const [scheduledEmails, setScheduledEmails] = useState([]);
-    
-    
+
+
     const [scheduleTime, setScheduleTime] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
@@ -27,7 +27,8 @@ function App() {
     const [sendImmediately, setSendImmediately] = useState(false);
 
     // Acces the api from env file
-    const api = process.env.REACT_APP_API_URL;
+    // const api = process.env.REACT_APP_API_URL;
+    const api = "http://localhost:3001";
 
 
     // Send the email immediately on form submission (without scheduling) 
@@ -35,7 +36,7 @@ function App() {
         e.preventDefault();
 
         try {
-            await axios.post(api+'/send-email', {
+            await axios.post(api + '/send-email', {
                 emails,
                 format,
                 subject,
@@ -67,7 +68,8 @@ function App() {
         console.log('scheduleTime:', scheduleTime);
 
         try {
-            await axios.post(api+'/schedule-email', {
+            // await axios.post(api+'/schedule-email', {
+            await axios.post(api + '/schedule-email', {
                 emails,
                 format,
                 subject,
@@ -87,7 +89,7 @@ function App() {
 
     const fetchScheduledEmails = async () => {
         try {
-            const response = await axios.get(api+'/scheduled-emails');
+            const response = await axios.get(api + '/scheduled-emails');
             setScheduledEmails(response.data);
         } catch (error) {
             console.error('Error fetching scheduled emails:', error);
@@ -101,40 +103,49 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Email Scheduler</h1>
+                <div className='h1 text-center'>Email Scheduler</div>
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
                     <form onSubmit={handleSubmit}>
-                        <div>
+
+                        <div className='form-group'>
                             <label>Emails (comma-separated):</label>
-                            <input type="text" value={emails} style={{width:"80vw"}} onChange={(e) => setEmails(e.target.value)} required />
+                            <input type="text" classsName="form-control" value={emails} style={{ width: "60vw" }} onChange={(e) => setEmails(e.target.value)} required />
                         </div>
-                        <div>
-                            <label>Format:</label>
-                            <select value={format} onChange={(e) => setFormat(e.target.value)}>
-                                <option value="format1">Specific application</option>
-                                <option value="format2">Non Specific application</option>
-                                <option value="format3">Not applied but review</option>
-                            </select>
+                        <div className='dropdown'>
+                            <label className='mr-2'>Format:</label>
+                            <div className='dropdown'>
+                                <button className='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                    {format === 'format1' && 'Specific application'}
+                                    {format === 'format2' && 'Non Specific application'}
+                                    {format === 'format3' && 'Not applied but review'}
+                                </button>
+                                <div className='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                                    <a className='dropdown-item' href='#' onClick={() => setFormat('format1')}>Specific application</a>
+                                    <a className='dropdown-item' href='#' onClick={() => setFormat('format2')}>Non Specific application</a>
+                                    <a className='dropdown-item' href='#' onClick={() => setFormat('format3')}>Not applied but review</a>
+                                </div>
+                            </div>
                         </div>
-                        <div>
+
+                        <div className='form-group'>
                             <label>Subject:</label>
-                            <input type="text" value={subject} style={{width:"70vw"}} onChange={(e) => setSubject(e.target.value)} />
+                            <input type="text" classsName="form-control" value={subject} style={{ width: "60vw" }} onChange={(e) => setSubject(e.target.value)} />
                         </div>
                         {['format1', 'format3'].includes(format) && (
                             <>
-                                <div>
+                                <div className='form-group'>
                                     <label>Company Name:</label>
-                                    <input type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
+                                    <input type="text" classsName="form-control" required value={companyName} onChange={(e) => setCompanyName(e.target.value)} />
                                 </div>
-                                <div>
+                                <div className='form-group'>
                                     <label>Company Post:</label>
-                                    <input type="text" value={companyPost} onChange={(e) => setCompanyPost(e.target.value)} />
+                                    <input type="text" classsName="form-control" required value={companyPost} onChange={(e) => setCompanyPost(e.target.value)} />
                                 </div>
-                                <div>
+                                <div className='form-group'>
                                     <label>Company Post URL:</label>
-                                    <input type="text" value={companyPostURL} onChange={(e) => setCompanyPostURL(e.target.value)} />
+                                    <input type="text" classsName="form-control" required value={companyPostURL} onChange={(e) => setCompanyPostURL(e.target.value)} />
                                 </div>
                             </>
                         )}
@@ -144,21 +155,22 @@ function App() {
                             <input type="checkbox" id="sendImmediately" name="sendImmediately" checked={sendImmediately} onChange={(e) => setSendImmediately(e.target.checked)} />
                             <label htmlFor="sendImmediately">Send email immediately</label>
                         </div>
+                        <div className='row'>
 
-                        <div>
-                            <label>Schedule Time (cron format, IST):</label>
-                            {/* <input type="text" value={scheduleTime} style={{width:"70vw"}} onChange={(e) => setScheduleTime(e.target.value)} placeholder="e.g. '0 9 * * *' for 9 AM daily" required /> */}
+                            <div className='col-4'>
+                                <label>Date:</label>
+                                {/* If the checkbox is checked, disable the date and time inputs */}
+                                <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required={sendImmediately ? false : true} disabled={sendImmediately} />
+                            </div>
+                            <div className='col-4'>
+                                <label>Time:</label>
+                                <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required={sendImmediately ? false : true} disabled={sendImmediately} />
+                            </div>
                         </div>
-                        <div>
-                            <label>Date:</label>
-                            {/* If the checkbox is checked, disable the date and time inputs */}
-                            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required={sendImmediately ? false : true} disabled={sendImmediately} />
-                        </div>
-                        <div>
-                            <label>Time:</label>
-                            <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required={sendImmediately ? false : true} disabled={sendImmediately} />
-                        </div>
-                        <button type="submit">Schedule Email</button>
+
+                        <button type="submit" className="btn btn-primary">Schedule Email</button>
+                        {/* <button type="submit" >Submit</button> */}
+
                     </form>
                 )}
             </header>
