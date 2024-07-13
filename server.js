@@ -156,7 +156,6 @@ const emailContents = {
     })
 };
 
-
 app.post('/schedule-email', upload.none(), (req, res) => {
     const { emails, format, subject, companyName, companyPost, companyPostURL, scheduleTime } = req.body;
 
@@ -164,9 +163,11 @@ app.post('/schedule-email', upload.none(), (req, res) => {
         scheduleEmail({ emails, format, subject, companyName, companyPost, companyPostURL, scheduleTime });
         res.status(200).send('Email scheduled successfully');
     } catch (error) {
+        console.error('Error scheduling email:', error);
         res.status(500).send('Error scheduling email: ' + error.toString());
     }
 });
+
 
 app.get('/scheduled-emails', (req, res) => {
     res.status(200).json(scheduledTasks.map(task => ({
