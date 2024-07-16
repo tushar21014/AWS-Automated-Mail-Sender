@@ -14,7 +14,7 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
-console.log(process.env.email);
+console.log(process.env.Email);
 console.log(process.env.Password);
 
 // Configure the email transporter
@@ -181,6 +181,90 @@ app.get('/scheduled-emails', (req, res) => {
     })));
 });
 
+app.delete('/delete-scheduled-email/:index', (req, res) => {
+    const index = parseInt(req.params.index);
+
+    if (index >= 0 && index < scheduledTasks.length) {
+        const [removedTask] = scheduledTasks.splice(index, 1);
+        removedTask.task.stop();
+        res.status(200).send(`Scheduled email at index ${index} has been deleted.`);
+    } else {
+        res.status(400).send('Invalid index.');
+    }
+});
+
+// Endpoint to update a scheduled email by index
+app.put('/update-scheduled-email/:index', upload.none(), (req, res) => {
+    const index = parseInt(req.params.index, 10);
+    const { emails, format, subject, companyName, companyPost, companyPostURL, scheduleTime } = req.body;
+
+    if (index < 0 || index >= scheduledTasks.length) {
+        return res.status(400).send('Invalid index');
+    }
+
+    // Update the scheduled email details
+    scheduledTasks[index] = {
+        emails,
+        format,
+        subject,
+        companyName,
+        companyPost,
+        companyPostURL,
+        scheduleTime,
+        task: scheduledTasks[index].task // Keep the existing task
+    };
+
+    // Reschedule the task
+    scheduledTasks[index].task.stop();
+    scheduledTasks[index].task = cron.schedule(scheduleTime, () => {
+        const emailList = emails.split(',').map(email => email.trim());
+        let emailContent;
+        if (format === 'format1' || format === 'format3') {
+            emailContent = emailContents[format](companyName, companyPost, companyPostURL);
+        } else {
+            emailContent = emailContents[format];
+        }
+
+        const attachments = [
+            {
+                filename: 'Curriculum Vitae Tushar Gupta.pdf',
+                content: fs.readFileSync('Curriculum Vitae Tushar Gupta.pdf'),
+                contentType: 'application/pdf'
+            },
+            {
+                filename: 'Tushar Cover Letter.pdf',
+                content: fs.readFileSync('Tushar Cover Letter.pdf'),
+                contentType: 'application/pdf'
+            }
+        ];
+
+        emailList.forEach(email => {
+            const mailOptions = {
+                from: '"Tushar Gupta" <tg21014@gmail.com>',
+                to: email,
+                subject: subject || 'Default Subject',
+                text: emailContent.text,
+                html: emailContent.html,
+                attachments: attachments
+            };
+
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.error(`Error sending email to ${email}:`, error);
+                } else {
+                    console.log(`Email sent to ${email}:`, info.response);
+                }
+            });
+        });
+    }, {
+        timezone: 'Asia/Kolkata'
+    });
+
+    res.status(200).send('Scheduled email updated successfully');
+});
+
+
+
 app.post('/send-email', upload.none(), (req, res) => {
     const { emails, format, subject, companyName, companyPost, companyPostURL } = req.body;
 
@@ -287,7 +371,8 @@ function scheduleEmail({ emails, format, subject, companyName, companyPost, comp
     scheduledTasks.push({ emails, format, subject, companyName, companyPost, companyPostURL, scheduleTime, task });
 }
 
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
+const PORT = 4001;
 app.listen(PORT, () => {
 
   // Test the email transporter connection on server start up

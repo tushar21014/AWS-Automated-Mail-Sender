@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Email Scheduler Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The Email Scheduler Application is a React-based web application designed to schedule and send emails at specified times. It allows users to input email addresses, select the format of the email, and specify the subject, company name, company post, and the URL of the job posting. Users can also choose to send the email immediately or schedule it for a later time.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Emails Input**: Users can enter a comma-separated list of email addresses to which the email will be sent.
+- **Format Dropdown**: Allows users to select the format of the email. Options include "Specific application", "Non Specific application", and "Not applied but review".
+- **Subject Input**: Users can specify the subject line of the email.
+- **Company Name Input**: For specific applications, users can enter the name of the company.
+- **Company Post Input**: Users can specify the position they are applying for.
+- **Company Post URL Input**: Users can provide the URL of the job posting.
+- **Send Email Immediately Checkbox**: Option to send the email immediately or schedule it for later.
+- **Date and Time Input**: Users can specify the date and time when the email should be sent.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To run the Email Scheduler Application, follow these steps:
 
-### `npm test`
+1. Clone the repository to your local machine.
+2. Navigate to the project directory and run `npm install` to install dependencies.
+3. Start the application by running `npm start`. This will launch the application in your default web browser.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+1. Fill in the required fields, including the recipient's email addresses and the email format.
+2. Optionally, specify the subject, company name, company post, and the URL of the job posting.
+3. Choose whether to send the email immediately or schedule it for a later time. If scheduling, select the desired date and time.
+4. Click the "Send" or "Schedule" button to proceed with the email operation.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React
+- Axios for API requests
+- react-hot-toast for notifications
+- Font Awesome for icons
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
 
-### `npm run eject`
+Contributions to the Email Scheduler Application are welcome. Please ensure to follow the project's coding standards and submit pull requests for any new features or bug fixes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## License
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+<!-- 
+Features:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Add a generalised email template for job applications 
+- 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ -->
