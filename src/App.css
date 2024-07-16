@@ -1,10 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 body {
   display: flex;
-  font-family: Arial, sans-serif;
-    background-image: url("./bg.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  font-family: "Poppins", sans-serif;
+    
+  /* background-color: #3b0646  !important;  */
+  background-color: #b5bfa1  !important; 
+  /* background-color: #4A249D !important; 
+  background: #EBCCF1  !important; */
+  opacity: 1;
+  /* background-image: url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaCUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D'); */
+  /* background-image: radial-gradient(#ffffff 0.65px, #262626 0.65px); */
+  background-size: 20px 20px;
   
 }
 
@@ -28,8 +36,8 @@ body {
 
 .App-aside {
   width: 20vw;
-  background: #393941;
-  color: #FCEDDA;
+  background: #e6ece1;
+  color: #000000;
   font-weight: 400;
   padding: 20px;
   border-left: 1px solid #ccc;
@@ -48,7 +56,7 @@ body {
 }
 
 .email-item {
-  color: #585858;
+  color: #f6f6f6;
   margin-bottom: 10px;
   margin-top: 10px;
   padding: 10px;
@@ -66,7 +74,9 @@ body {
   flex-direction: column;
   position: relative;
   width: 60% !important;
-  background: #FCEDDA;
+  /* background: #EBCCF1  ;
+  background: white  ; */
+  background: #e6ece1;
   padding: 25px;
   margin-top: 12px;
   margin-bottom: 12px;
@@ -83,7 +93,7 @@ body {
 
 .container header {
   font-size: 1.2rem;
-  color: #000;
+  color: #262626;
   font-weight: 600;
   text-align: center;
 }
@@ -103,11 +113,11 @@ body {
   width: 100% !important;
   outline: none;
   font-size: 1rem;
-  color: #808080;
-  border: 1px solid #36aaba;
+  color: #262626;
+  border: 1px solid #b5bfa1;
   border-radius: 6px;
   padding: 0 15px;
-  background: #fee6e2;
+  background: #ffffff;
 }
 
 .input-box label {
@@ -120,7 +130,7 @@ body {
   width: 100%;
   outline: none;
   font-size: 1rem;
-  color: #808080;
+  color: #f6f6f6;
   margin-top: 5px;
   border: 1px solid #EE4E34;
   border-radius: 6px;
@@ -173,7 +183,7 @@ body {
   width: 100%;
   outline: none;
   border: none;
-  color: #808080;
+  color: #f6f6f6;
   font-size: 1rem;
   background: #FCEDDA;
 }
@@ -181,7 +191,7 @@ body {
 .form button {
   height: 40px;
   width: 100%;
-  color: #fee6e2;
+  color: #f6f6f6;
   font-size: 1rem;
   font-weight: 900;
   margin-top: 15px;
@@ -189,11 +199,11 @@ body {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: #36aaba;
+  background: #2a4f18;
 }
 
 .form button:hover {
-  background: #177b89;
+  background: #5d5d5d;
 }
 
 

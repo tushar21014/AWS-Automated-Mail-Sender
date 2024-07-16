@@ -1,4 +1,4 @@
-const FormInput = ({ label, value, onChange }) => {
+const FormInput = ({ label, value, onChange, placeholder="" }) => {
   return (
     <div className="input-box">
       <label>{label}</label>
@@ -6,6 +6,7 @@ const FormInput = ({ label, value, onChange }) => {
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
       />
     </div>
   );

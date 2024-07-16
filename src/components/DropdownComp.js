@@ -18,9 +18,9 @@ const DropdownMenuForFormats = ({ format, handleFormatChange }) => {
                     ? "Non Specific application"
                     : "Not applied but review"}
                 </button>
-                <div className="dropdown-menu" aria-labelledby="formatDropdown">
+                <div className="dropdown-menu w-full" aria-labelledby="formatDropdown">
                   <a
-                    className="dropdown-item"
+                    className="dropdown-item  border-b-2 border-black"
                     href="#"
                     onClick={() =>
                       handleFormatChange({ target: { value: "format1" } })

@@ -246,11 +246,13 @@ function App() {
           <h1>Email Scheduler</h1>
         </header>
 
-          <form className="form" onSubmit={handleSubmit}>
+          <form className="form form-group" onSubmit={handleSubmit}>
             <FormInput
               value={emails}
               onChange={setEmails}
+              className="form-control"
               label={"Emails (comma-separated):"}
+              placeholder={"e.g. abc@google.com, xyz@microsoft.com"}
             />
 
             <DropdownMenuForFormats
@@ -273,6 +275,7 @@ function App() {
                     value={companyName}
                     onChange={setCompanyName}
                     label={"Company Name:"}
+                    placeholder="e.g. Google"
                   />
                   {["format1", "format3"].includes(format) && (
                     <>
@@ -280,11 +283,13 @@ function App() {
                         value={companyPost}
                         onChange={setCompanyPost}
                         label={"Company Post:"}
+                        placeholder="e.g. Software Developer"
                       />
                       <FormInput
                         value={companyPostURL}
                         onChange={setCompanyPostURL}
                         label={"Company Post URL:"}
+                        placeholder="e.g. https://careers.google.com/"
                       />
                     </>
                   )}
