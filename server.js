@@ -371,6 +371,13 @@ function scheduleEmail({ emails, format, subject, companyName, companyPost, comp
     scheduledTasks.push({ emails, format, subject, companyName, companyPost, companyPostURL, scheduleTime, task });
 }
 
+// Send index.html file to the client if the route is '/' or '/index.html'
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/backend.html');
+});
+
+
 // const PORT = process.env.PORT || 3001;
 const PORT = 4001;
 app.listen(PORT, () => {
