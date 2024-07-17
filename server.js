@@ -11,7 +11,10 @@ const upload = multer();
 
 require('dotenv').config();
 
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+    origin:[‘*’],
+}));
 app.use(express.json());
 
 console.log(process.env.Email);
