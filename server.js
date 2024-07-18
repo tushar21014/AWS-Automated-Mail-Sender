@@ -105,7 +105,7 @@ const emailContents = {
         I am very interested in Software development and have upskilled myself in technology such as JAVA, J2EE, Node Js, SQL, C++, ExpressJs, and React.<br/><br/>
         I assure you of full diligence in my work and therefore I am also attaching my work sample in this email which shows my logical skills and way of solving a problem effectively and efficiently. Therefore, I've applied for an entry-level opening at ${companyName} for the position of <a href="${companyPostURL}">${companyPost}</a>, and would appreciate it if you could kindly view it once.<br/><br/>
         These are some of my work samples for your reference:<br/>
-        <a href="https://www.github.com/tushar">Tushar Github</a><br/>
+        <a href="https://www.github.com/tushar21014">Tushar Github</a><br/>
         <a href="https://www.leadershiptalks.com">Leadership Talks</a><br/>
         <a href="https://www.notesync.com">Note Sync using MERN</a><br/>
         <a href="https://www.matrixhackathon.com">Matrix Hackathon</a><br/><br/>
@@ -145,7 +145,7 @@ const emailContents = {
         I am very interested in Software development and have upskilled myself in technology such as JAVA, J2EE, Node Js, SQL, C++, ExpressJs, and React.<br/><br/>
         I assure you of my full diligence in my work. I have attached my work sample to this email, showcasing my logical skills and my approach to solving problems effectively and efficiently. I am interested in the entry-level position of <a href="${companyPostURL}">${companyPost}</a> at ${companyName} and would greatly appreciate it if you could review my profile and consider me for this role.<br/><br/>
         These are some of my work samples for your reference:<br/>
-        <a href="https://www.github.com/tushar">Tushar Github</a><br/>
+        <a href="https://www.github.com/tushar21014">Tushar Github</a><br/>
         <a href="https://www.leadershiptalks.com">Leadership Talks</a><br/>
         <a href="https://www.notesync.com">Note Sync using MERN</a><br/>
         <a href="https://www.matrixhackathon.com">Matrix Hackathon</a><br/><br/>
