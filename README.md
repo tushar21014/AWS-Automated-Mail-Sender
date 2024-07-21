@@ -20,6 +20,11 @@ This project is a sophisticated mailing system designed to enhance the efficienc
 - **Backend:** Node.js, Express
 - **Cloud Services:** AWS (Amazon Web Services)
 
+## Demo
+Watch the project video demo to see the application in action:
+
+
+
 ## Installation
 
 1. **Clone the Repository:**
