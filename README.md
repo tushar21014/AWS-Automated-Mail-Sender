@@ -23,6 +23,7 @@ This project is a sophisticated mailing system designed to enhance the efficienc
 ## Demo
 Watch the project video demo to see the application in action:
 
+https://github.com/tushar21014/AWS-Automated-Mail-Sender/blob/AWS/Mail%20Scheduler_2.mp4
 
 
 ## Installation
