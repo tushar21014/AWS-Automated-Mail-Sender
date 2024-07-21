@@ -1,56 +1,75 @@
-# Email Scheduler Application
+# Mailing System Application
 
 ## Overview
 
-The Email Scheduler Application is a React-based web application designed to schedule and send emails at specified times. It allows users to input email addresses, select the format of the email, and specify the subject, company name, company post, and the URL of the job posting. Users can also choose to send the email immediately or schedule it for a later time.
+This project is a sophisticated mailing system designed to enhance the efficiency and effectiveness of bulk email communication with HR professionals. Built using React, Node.js, Express, and AWS, this application offers advanced features such as personalized bulk emailing, flexible scheduling, automatic labeling, and comprehensive email management.
 
 ## Features
 
-- **Emails Input**: Users can enter a comma-separated list of email addresses to which the email will be sent.
-- **Format Dropdown**: Allows users to select the format of the email. Options include "Specific application", "Non Specific application", and "Not applied but review".
-- **Subject Input**: Users can specify the subject line of the email.
-- **Company Name Input**: For specific applications, users can enter the name of the company.
-- **Company Post Input**: Users can specify the position they are applying for.
-- **Company Post URL Input**: Users can provide the URL of the job posting.
-- **Send Email Immediately Checkbox**: Option to send the email immediately or schedule it for later.
-- **Date and Time Input**: Users can specify the date and time when the email should be sent.
+- **Bulk Emailing:** Send personalized emails in bulk to HR professionals.
+- **Advanced Scheduling:** Schedule emails individually for precision and convenience.
+- **Automatic Labeling:** Automatically label emails by company names for easy management.
+- **Customizable Formats:** Choose from various email formats to suit your needs.
+- **CRUD Operations:** Create, read, update, and delete scheduled emails.
+- **Immediate Dispatch:** Send emails immediately in addition to scheduling.
+- **AWS Integration:** Ensures fast, reliable, and secure 24/7 operation.
+
+## Technologies Used
+
+- **Frontend:** React
+- **Backend:** Node.js, Express
+- **Cloud Services:** AWS (Amazon Web Services)
 
 ## Installation
 
-To run the Email Scheduler Application, follow these steps:
+1. **Clone the Repository:**
+    ```bash
+    git clone https://github.com/your-username/mailing-system.git
+    cd mailing-system
+    ```
 
-1. Clone the repository to your local machine.
-2. Navigate to the project directory and run `npm install` to install dependencies.
-3. Start the application by running `npm start`. This will launch the application in your default web browser.
+2. **Install Dependencies:**
+    ```bash
+    npm install
+    ```
+
+3. **Set Up Environment Variables:**
+    Create a `.env` file in the root directory and add your configuration details.
+    ```env
+    NODE_ENV=development
+    PORT=5000
+    AWS_ACCESS_KEY_ID=your-access-key-id
+    AWS_SECRET_ACCESS_KEY=your-secret-access-key
+    ```
+
+4. **Start the Application:**
+    ```bash
+    npm start
+    ```
 
 ## Usage
 
-1. Fill in the required fields, including the recipient's email addresses and the email format.
-2. Optionally, specify the subject, company name, company post, and the URL of the job posting.
-3. Choose whether to send the email immediately or schedule it for a later time. If scheduling, select the desired date and time.
-4. Click the "Send" or "Schedule" button to proceed with the email operation.
+1. **Access the Application:**
+   Open your browser and navigate to `http://localhost:5000`.
 
-## Dependencies
+2. **Create and Schedule Emails:**
+   Use the intuitive UI to create, schedule, and manage your emails.
 
-- React
-- Axios for API requests
-- react-hot-toast for notifications
-- Font Awesome for icons
+3. **Monitor Email Status:**
+   Track sent, scheduled, and labeled emails from the dashboard.
 
 ## Contributing
 
-Contributions to the Email Scheduler Application are welcome. Please ensure to follow the project's coding standards and submit pull requests for any new features or bug fixes.
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m 'Add your feature'`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License.
 
+## Acknowledgements
 
-
-<!-- 
-Features:
-
-- Add a generalised email template for job applications 
-- 
-
- -->
+This project was developed in collaboration with Rahul Sahani.
