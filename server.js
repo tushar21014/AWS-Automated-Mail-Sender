@@ -285,7 +285,7 @@ app.post('/send-email', upload.none(), (req, res) => {
 
     const attachments = [
         {
-            filename: 'Curriculum Vitae Tushar Gupta.pdf',
+            filename: 'Tushar Gupta Resume.pdf',
             content: fs.readFileSync('Curriculum Vitae Tushar Gupta Updated.pdf'),
             contentType: 'application/pdf'
         },
@@ -332,7 +332,7 @@ function scheduleEmail({ emails, format, subject, companyName, companyPost, comp
 
         const attachments = [
             {
-                filename: 'Curriculum Vitae Tushar Gupta.pdf',
+                filename: 'Tushar Gupta Resume.pdf',
                 content: fs.readFileSync('Curriculum Vitae Tushar Gupta Updated.pdf'),
                 contentType: 'application/pdf'
             },
