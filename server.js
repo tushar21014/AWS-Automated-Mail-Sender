@@ -101,14 +101,14 @@ const emailContents = {
     format1: (companyName, companyPost, companyPostURL) => ({
         text: '',
         html: `Respected Hiring Manager,<br/><br/>
-        My name is Tushar Gupta, and I have recently completed my Bachelor of Computer Applications from GGSIPU. I am a certified cloud practitioner and am actively seeking job opportunities.<br/><br/>
-        I am very interested in Software development and have upskilled myself in technology such as JAVA, J2EE, Node Js, SQL, C++, ExpressJs, and React.<br/><br/>
+        My name is Tushar Gupta, and I am pursuing my MCA from GGSIPU. I am a certified cloud practitioner and am actively seeking for backend job opportunities.<br/><br/>
+        I have a keen interest in Software development and have upskilled myself in technology such as JAVA, J2EE, Node Js, SQL, C++, ExpressJs, and React.<br/><br/>
         I assure you of full diligence in my work and therefore I am also attaching my work sample in this email which shows my logical skills and way of solving a problem effectively and efficiently. Therefore, I've applied for an entry-level opening at ${companyName} for the position of <a href="${companyPostURL}">${companyPost}</a>, and would appreciate it if you could kindly view it once.<br/><br/>
         These are some of my work samples for your reference:<br/>
+        <a href="https://www.linkedin.com/posts/tushar-gupta-5666ba23b_react-nodejs-express-activity-7219200218557239297-YeTo?utm_source=share&utm_medium=member_desktop">AWS Automated Email Scheduler</a><br/>
+        <a href="https://www.linkedin.com/posts/tushar-gupta-5666ba23b_taskswift-taskmanagement-mernstack-activity-7222096840169508864-6LkL?utm_source=share&utm_medium=member_desktop">TaskSwift</a><br/>
+        <a href="https://note-sync-rs.vercel.app/about">Note Sync</a><br/>
         <a href="https://www.github.com/tushar21014">Tushar Github</a><br/>
-        <a href="https://iitminternware.com//2024-25/events/Leadership%20Talks/Homepage/index.php">Leadership Talks</a><br/>
-        <a href="https://note-sync-rs.vercel.app/about">Note Sync using MERN</a><br/>
-        <a href="https://www.iitminternware.com/2023-24/MATRIX/index.php">Matrix Hackathon</a><br/><br/>
         PFA<br/>
         1) Cover Letter<br/>
         2) CV<br/><br/>
@@ -121,14 +121,14 @@ const emailContents = {
     format2: {
         text: '',
         html: `Respected Hiring Manager,<br/><br/>
-        My name is Tushar Gupta, and I have recently completed my Bachelor of Computer Applications from GGSIPU. I am a certified cloud practitioner and am actively seeking job opportunities.<br/><br/>
-        I am very interested in Software development and have upskilled myself in technology such as JAVA, J2EE, Node Js, SQL, C++, ExpressJs, and React.<br/><br/>
+        My name is Tushar Gupta, and I am pursuing my MCA from GGSIPU. I am a certified cloud practitioner and am actively seeking for backend job opportunities.<br/><br/>
+        I have a keen interest in Software development and have upskilled myself in technology such as JAVA, SpringBoot, Node Js, SQL, C++, ExpressJs, and React.<br/><br/>
         I assure you that I will be very diligent in my work and I am also attaching my work sample in this email which shows my logical skills and way of solving a problem effectively and efficiently. I wanted to apply for any vacant position in this particular field at your company.<br/><br/>
         These are some of my work samples for your reference:<br/>
+        <a href="https://www.linkedin.com/posts/tushar-gupta-5666ba23b_react-nodejs-express-activity-7219200218557239297-YeTo?utm_source=share&utm_medium=member_desktop">AWS Automated Email Scheduler</a><br/>
+        <a href="https://www.linkedin.com/posts/tushar-gupta-5666ba23b_taskswift-taskmanagement-mernstack-activity-7222096840169508864-6LkL?utm_source=share&utm_medium=member_desktop">TaskSwift</a><br/>
+        <a href="https://note-sync-rs.vercel.app/about">Note Sync</a><br/>
         <a href="https://www.github.com/tushar21014">Tushar Github</a><br/>
-        <a href="https://iitminternware.com//2024-25/events/Leadership%20Talks/Homepage/index.php">Leadership Talks</a><br/>
-        <a href="https://note-sync-rs.vercel.app/about">Note Sync using MERN</a><br/>
-        <a href="https://www.iitminternware.com/2023-24/MATRIX/index.php">Matrix Hackathon</a><br/><br/>
         PFA<br/>
         1) CV<br/>
         2) Cover Letter<br/><br/>
@@ -141,14 +141,14 @@ const emailContents = {
     format3: (companyName, companyPost, companyPostURL) => ({
         text: '',
         html: `Respected Hiring Manager,<br/><br/>
-        My name is Tushar Gupta, and I have recently completed my Bachelor of Computer Applications from GGSIPU. I am a certified cloud practitioner and am actively seeking job opportunities.<br/><br/>
-        I am very interested in Software development and have upskilled myself in technology such as JAVA, J2EE, Node Js, SQL, C++, ExpressJs, and React.<br/><br/>
+        My name is Tushar Gupta, and I am pursuing my MCA from GGSIPU. I am a certified cloud practitioner and am actively seeking for backend job opportunities.<br/><br/>
+        I have a keen interest in Software development and have upskilled myself in technology such as JAVA, SpringBoot, Node Js, SQL, C++, ExpressJs, and React.<br/><br/>
         I assure you of my full diligence in my work. I have attached my work sample to this email, showcasing my logical skills and my approach to solving problems effectively and efficiently. I am interested in the entry-level position of <a href="${companyPostURL}">${companyPost}</a> at ${companyName} and would greatly appreciate it if you could review my profile and consider me for this role.<br/><br/>
         These are some of my work samples for your reference:<br/>
+        <a href="https://www.linkedin.com/posts/tushar-gupta-5666ba23b_react-nodejs-express-activity-7219200218557239297-YeTo?utm_source=share&utm_medium=member_desktop">AWS Automated Email Scheduler</a><br/>
+        <a href="https://www.linkedin.com/posts/tushar-gupta-5666ba23b_taskswift-taskmanagement-mernstack-activity-7222096840169508864-6LkL?utm_source=share&utm_medium=member_desktop">TaskSwift</a><br/>
+        <a href="https://note-sync-rs.vercel.app/about">Note Sync</a><br/>
         <a href="https://www.github.com/tushar21014">Tushar Github</a><br/>
-        <a href="https://iitminternware.com//2024-25/events/Leadership%20Talks/Homepage/index.php">Leadership Talks</a><br/>
-        <a href="https://note-sync-rs.vercel.app/about">Note Sync using MERN</a><br/>
-        <a href="https://www.iitminternware.com/2023-24/MATRIX/index.php">Matrix Hackathon</a><br/><br/>
         PFA<br/>
         1) Cover Letter<br/>
         2) CV<br/><br/>
